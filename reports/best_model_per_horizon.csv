@@ -1,0 +1,4 @@
+model,horizon,MAE,RMSE,Bias,MAPE,rmse_vs_snaive_pct
+random_forest,7,3799,4730.3,1226.2,25.1,25.3
+ets,30,6789.5,9856.4,-5748.7,29,15.7
+random_forest,90,5245.1,8133.2,-623.3,31.6,28.5

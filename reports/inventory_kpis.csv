@@ -1,0 +1,11 @@
+metric,value
+"Current inventory value (GBP, simulated stock)",424440
+Product-store combinations,500
+Critical stockouts,17
+Replenishment needed,101
+Low stock (under 7 days),35
+Overstocked (over 90 days),115
+Slow-moving,2
+Dead stock,0
+Overall inventory turnover (times per year),6
+Average days of inventory remaining (median),57.9

@@ -1,0 +1,21 @@
+supplier_id,supplier_name,lead_time,products_supplied
+SUP14,Supplier 14,15,4
+SUP15,Supplier 15,15,6
+SUP7,Supplier 7,14,3
+SUP17,Supplier 17,12,7
+SUP1,Supplier 1,11,7
+SUP5,Supplier 5,11,5
+SUP19,Supplier 19,11,4
+SUP20,Supplier 20,11,9
+SUP3,Supplier 3,10,3
+SUP9,Supplier 9,10,8
+SUP10,Supplier 10,10,6
+SUP11,Supplier 11,10,7
+SUP8,Supplier 8,9,1
+SUP2,Supplier 2,8,5
+SUP4,Supplier 4,8,4
+SUP13,Supplier 13,8,3
+SUP16,Supplier 16,7,5
+SUP12,Supplier 12,6,3
+SUP6,Supplier 6,5,6
+SUP18,Supplier 18,2,4

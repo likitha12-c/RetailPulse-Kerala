@@ -1,0 +1,3 @@
+model,accuracy,macro_f1,recall_Low,recall_Medium,recall_High
+Decision tree,0.817,0.817,0.846,0.787,0.815
+Random forest,0.825,0.824,0.874,0.767,0.828

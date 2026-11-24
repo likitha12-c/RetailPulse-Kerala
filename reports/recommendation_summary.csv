@@ -1,0 +1,10 @@
+type,priority,recommendations,financial_impact_gbp
+Customer retention,High,27,180353
+Customer retention,Medium,65,82453
+Investigate returns,Medium,4731,0
+Reduce purchasing,Low,168,2014
+Reduce purchasing,Medium,42,2598
+Replenishment,Critical,17,1900
+Replenishment,High,18,1454
+Replenishment,Medium,129,3374
+Supplier review,Medium,8,0

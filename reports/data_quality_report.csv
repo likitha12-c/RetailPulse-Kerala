@@ -1,0 +1,12 @@
+metric,value
+Raw rows,1048575
+Duplicate rows,34150
+Rows with missing customer_id,236682
+Negative-quantity rows,22697
+Zero/negative price rows,6171
+Cancelled invoice rows,19261
+Rejected rows,45732
+Return rows,17692
+Clean sales rows,985151
+Share of raw rows kept as clean sales (%),94
+Outliers flagged (revenue > 99.9th percentile),986

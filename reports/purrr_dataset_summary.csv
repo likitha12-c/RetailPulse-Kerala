@@ -1,0 +1,5 @@
+"dataset","rows","columns","missing_values"
+"sales",985151,24,4514283
+"returns",17692,13,18021
+"products",100,5,0
+"inventory",500,4,0

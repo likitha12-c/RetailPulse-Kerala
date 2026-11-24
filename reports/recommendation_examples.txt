@@ -1,0 +1,75 @@
+STORE: KOTTAYAM_MAIN
+PRODUCT: WHITE HANGING HEART T-LIGHT HOLDER
+
+CURRENT STOCK: 0 units
+FORECAST DEMAND: 682 units
+SUPPLIER LEAD TIME: 10 days
+
+STATUS: STOCKOUT
+
+RECOMMENDATION:
+Order 1269 units immediately.
+
+PRIORITY: CRITICAL
+Assumptions: demand forecast from the 90-day model, 95% service level, simulated stock.
+----------------------------------------
+STORE: ERNAKULAM_CENTRAL
+PRODUCT: VICTORIAN GLASS HANGING T-LIGHT
+
+CURRENT STOCK: 0 units
+FORECAST DEMAND: 548 units
+SUPPLIER LEAD TIME: 11 days
+
+STATUS: STOCKOUT
+
+RECOMMENDATION:
+Order 1124 units immediately.
+
+PRIORITY: CRITICAL
+Assumptions: demand forecast from the 90-day model, 95% service level, simulated stock.
+----------------------------------------
+STORE: THRISSUR_CENTRAL
+PRODUCT: PAPER CHAIN KIT VINTAGE CHRISTMAS
+
+CURRENT STOCK: 0 units
+FORECAST DEMAND: 468 units
+SUPPLIER LEAD TIME: 14 days
+
+STATUS: STOCKOUT
+
+RECOMMENDATION:
+Order 645 units immediately.
+
+PRIORITY: CRITICAL
+Assumptions: demand forecast from the 90-day model, 95% service level, simulated stock.
+----------------------------------------
+STORE: KOTTAYAM_MAIN
+PRODUCT: VICTORIAN GLASS HANGING T-LIGHT
+
+CURRENT STOCK: 0 units
+FORECAST DEMAND: 299 units
+SUPPLIER LEAD TIME: 11 days
+
+STATUS: STOCKOUT
+
+RECOMMENDATION:
+Order 468 units immediately.
+
+PRIORITY: CRITICAL
+Assumptions: demand forecast from the 90-day model, 95% service level, simulated stock.
+----------------------------------------
+STORE: THRISSUR_CENTRAL
+PRODUCT: JUMBO BAG OWLS
+
+CURRENT STOCK: 0 units
+FORECAST DEMAND: 176 units
+SUPPLIER LEAD TIME: 8 days
+
+STATUS: STOCKOUT
+
+RECOMMENDATION:
+Order 310 units immediately.
+
+PRIORITY: CRITICAL
+Assumptions: demand forecast from the 90-day model, 95% service level, simulated stock.
+----------------------------------------
