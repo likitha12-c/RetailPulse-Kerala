@@ -10,3 +10,8 @@ renv/staging/
 
 # Temporary files
 *.tmp
+
+# Large datasets and databases
+data/raw/
+data/processed/
+data/simulated/

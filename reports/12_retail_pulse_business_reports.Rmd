@@ -1,0 +1,520 @@
+---
+
+---
+title: "Retail Pulse Kerala"
+subtitle: "Business Analytics and Documentation Report"
+author: "Retail Analytics Team"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    theme: readable
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = "center"
+)
+
+# Read an existing report CSV safely
+read_report_data <- function(filename) {
+  if (file.exists(filename)) {
+    read.csv(filename, stringsAsFactors = FALSE)
+  } else {
+    NULL
+  }
+}
+
+# Display a CSV table when available
+show_table <- function(filename, caption, n = 10) {
+  data <- read_report_data(filename)
+
+  if (!is.null(data) && nrow(data) > 0) {
+    cat("\n", caption, "\n")
+    print(knitr::kable(
+      head(data, n),
+      caption = caption
+    ))
+  } else {
+    cat("\nData file not available:", filename, "\n")
+  }
+}
+
+# Display an existing chart when available
+show_figure <- function(filename, caption) {
+  if (file.exists(filename)) {
+    cat("\n", caption, "\n")
+    knitr::include_graphics(filename)
+  } else {
+    cat("\nChart not available:", filename, "\n")
+  }
+}
+```
+
+# Chapter 1: Executive Sales Performance Report
+
+## 1.1 Business Problem
+
+Retail managers need to understand overall sales performance, revenue generation, order activity, and sales trends.
+
+This report evaluates the historical sales performance of Retail Pulse Kerala to support business planning and management decisions.
+
+## 1.2 Dataset Description
+
+The analysis uses the cleaned retail sales dataset containing 985,151 records.
+
+Important fields include invoice details, invoice dates, product codes, quantities, and revenue.
+
+## 1.3 Methodology
+
+The analysis includes:
+- Data cleaning and validation.
+- Revenue and quantity calculations.
+- Order and customer KPI analysis.
+- Monthly revenue analysis.
+- Sales trend visualization.
+
+## 1.4 Analysis and Visualizations
+
+### Sales KPI Summary
+
+```{r}
+show_table("kpi_summary.csv", "Overall Sales KPI Summary")
+show_table("kpi_phase4.csv", "Phase 4 KPI Results")
+```
+
+### Monthly Revenue
+
+```{r}
+show_table("datatable_monthly_sales.csv", "Monthly Sales Summary")
+show_figure("figures/01_monthly_revenue.png", "Monthly Revenue Trend")
+show_figure("figures/02_mom_growth.png", "Month-on-Month Growth")
+show_figure("figures/03_weekly_revenue.png", "Weekly Revenue")
+```
+
+### Product and Category Performance
+
+```{r}
+show_figure("figures/07_top10_products.png", "Top 10 Products")
+show_figure("figures/12_category_donut.png", "Category Revenue Distribution")
+show_table("product_profitability.csv", "Product Profitability")
+```
+
+## 1.5 Key Findings
+
+The completed KPI analysis recorded:
+- Total revenue: GBP 19,148,015.
+- Total orders: 38,975.
+- Average order value: GBP 491.
+- Average selling price: GBP 1.75 per unit.
+- Sales growth from January to November 2011 compared with the same period in 2010: 3%.
+
+These are historical results from the project analysis.
+
+## 1.6 Business Implications
+
+Sales KPIs help managers understand revenue generation and purchasing activity. Monthly trends help identify periods of stronger or weaker performance.
+
+## 1.7 Recommendations
+
+- Monitor revenue and order KPIs regularly.
+- Identify products contributing the most revenue.
+- Investigate declining sales periods.
+- Use historical sales trends for business planning.
+- Review product profitability before making pricing decisions.
+
+## 1.8 Limitations
+
+- Historical sales do not guarantee future performance.
+- Some customer information is missing.
+- Cost information is available for only a portion of products.
+
+---
+
+# Chapter 2: Customer Segmentation Report
+
+## 2.1 Business Problem
+
+Customers have different purchasing patterns and values. Understanding these differences helps retailers improve customer retention, loyalty, and marketing strategies.
+
+## 2.2 Dataset Description
+
+This analysis uses customer analytics outputs, including high-value customer information, churn predictions, customer segmentation visualizations, and reactivation recommendations.
+
+## 2.3 Methodology
+
+The project uses customer purchasing behaviour, RFM-related analysis, customer value evaluation, and churn modelling.
+
+## 2.4 Analysis and Visualizations
+
+### Customer Segmentation
+
+```{r}
+show_figure("figures/23_segment_customers.png", "Customer Segmentation")
+show_figure("figures/25_segment_scatter.png", "Customer Segment Comparison")
+show_figure("figures/26_recency_hist.png", "Customer Recency Distribution")
+```
+
+### High-Value Customers
+
+```{r}
+show_table("high_value_customers.csv", "High-Value Customer Records")
+```
+
+### Churn Analysis
+
+```{r}
+show_table("churn_model_comparison.csv", "Churn Model Comparison")
+show_table("churn_feature_importance.csv", "Churn Feature Importance")
+show_figure("figures/36_churn_importance.png", "Churn Model Feature Importance")
+```
+
+### Customer Reactivation
+
+```{r}
+show_table("reactivation_recommendations.csv", "Customer Reactivation Recommendations")
+show_table("churn_risk_predictions.csv", "Customer Churn Risk Predictions")
+```
+
+## 2.5 Key Findings
+
+The project generates customer segmentation, high-value customer records, and churn-risk predictions.
+
+These outputs can help identify customers who may need additional engagement. Actual segment sizes and model performance should be interpreted using the displayed results.
+
+## 2.6 Business Implications
+
+Customer segmentation allows management to develop different strategies for valuable, active, and potentially inactive customers.
+
+## 2.7 Recommendations
+
+- Introduce loyalty programmes for high-value customers.
+- Develop reactivation campaigns for inactive customers.
+- Monitor churn-risk predictions.
+- Use customer purchasing behaviour for targeted marketing.
+- Review customer segments regularly.
+
+## 2.8 Limitations
+
+- Missing customer identifiers can affect customer-level analysis.
+- Historical customer behaviour may change.
+- Churn predictions depend on data quality and model performance.
+
+---
+
+# Chapter 3: Inventory Optimization Report
+
+## 3.1 Business Problem
+
+Poor inventory management can cause stock shortages, excess inventory, and lost sales.
+
+The purpose of this report is to evaluate inventory performance and support better stock replenishment decisions.
+
+## 3.2 Dataset Description
+
+The project uses product, inventory, sales, demand, supplier lead-time, and reorder recommendation outputs.
+
+## 3.3 Methodology
+
+The analysis includes:
+- Inventory KPI calculations.
+- Stock status evaluation.
+- Inventory risk identification.
+- Supplier lead-time analysis.
+- Reorder recommendation analysis.
+
+## 3.4 Analysis and Visualizations
+
+### Inventory KPIs and Risk
+
+```{r}
+show_table("inventory_kpis.csv", "Inventory KPI Summary")
+show_table("inventory_risk_full.csv", "Inventory Risk Details")
+show_figure("figures/27_inventory_status.png", "Inventory Status")
+show_figure("figures/28_top_risk.png", "Highest Inventory Risks")
+```
+
+### Stock and Supplier Analysis
+
+```{r}
+show_figure("figures/29_days_remaining.png", "Estimated Days of Stock Remaining")
+show_figure("figures/30_supplier_lead_times.png", "Supplier Lead Times")
+```
+
+### Reorder Recommendations
+
+```{r}
+show_table("reorder_recommendations.csv", "Reorder Recommendations")
+show_table("forecast_reorder_recommendations.csv", "Forecast-Based Reorder Recommendations")
+```
+
+## 3.5 Key Findings
+
+The inventory analysis generates stock-status information, inventory risk records, and reorder recommendations.
+
+The results help identify products that may require replenishment or closer monitoring.
+
+## 3.6 Business Implications
+
+Inventory analysis helps managers reduce stock shortages, avoid unnecessary stock accumulation, and improve product availability.
+
+## 3.7 Recommendations
+
+- Monitor products with high inventory risk.
+- Review reorder recommendations regularly.
+- Consider supplier lead times when planning purchases.
+- Maintain appropriate safety stock.
+- Compare actual demand with inventory levels.
+
+## 3.8 Limitations
+
+- Inventory recommendations depend on the accuracy of stock records.
+- Supplier lead times may change.
+- Forecasted demand may differ from actual demand.
+
+---
+
+# Chapter 4: Demand Forecasting and Model Evaluation Report
+
+## 4.1 Business Problem
+
+Retailers need to estimate future product demand to plan stock levels, purchasing, and business operations.
+
+This report evaluates historical demand patterns and forecasting model outputs.
+
+## 4.2 Dataset Description
+
+The analysis uses historical daily sales and demand-related features, model comparison outputs, forecast results, and product demand classifications.
+
+## 4.3 Methodology
+
+The forecasting workflow includes:
+- Historical demand analysis.
+- Time-series visualization.
+- Feature preparation.
+- Forecast model comparison.
+- Model evaluation.
+- Future demand estimation.
+
+## 4.4 Analysis and Visualizations
+
+### Demand Patterns
+
+```{r}
+show_table("daily_series.csv", "Daily Demand Data")
+show_figure("figures/31_decomposition.png", "Demand Decomposition")
+show_figure("figures/32_weekly_units.png", "Weekly Demand")
+```
+
+### Forecast Model Evaluation
+
+```{r}
+show_table("forecast_model_comparison.csv", "Forecast Model Comparison")
+show_table("best_model_per_horizon.csv", "Best Model by Forecast Horizon")
+show_figure("figures/33_model_comparison.png", "Forecast Model Performance")
+show_figure("figures/34_actual_vs_predicted.png", "Actual versus Predicted Demand")
+```
+
+### Future Demand Forecast
+
+```{r}
+show_table("forecast_7_day.csv", "Seven-Day Forecast")
+show_table("forecast_30_day.csv", "Thirty-Day Forecast")
+show_table("forecast_next90_days.csv", "Ninety-Day Forecast")
+show_figure("figures/35_forecast_90_day.png", "Ninety-Day Demand Forecast")
+```
+
+### Product Demand Classification
+
+```{r}
+show_table("product_demand_classes.csv", "Product Demand Classes")
+show_figure("figures/38_demand_classes.png", "Demand Classification")
+```
+
+## 4.5 Key Findings
+
+The project generates short-term and longer-term forecasts, compares forecasting models, and classifies product demand.
+
+The model comparison results should be used to identify the most suitable model for each forecast horizon.
+
+## 4.6 Business Implications
+
+Demand forecasts can help managers plan purchasing, inventory replenishment, and stock availability.
+
+## 4.7 Recommendations
+
+- Use forecast results as planning support.
+- Monitor forecast accuracy regularly.
+- Compare predicted demand with actual sales.
+- Review demand patterns before placing large orders.
+- Update models when new sales data becomes available.
+
+## 4.8 Limitations
+
+- Forecast accuracy depends on historical data quality.
+- Unexpected market changes may affect actual demand.
+- Forecasts are estimates, not guaranteed sales results.
+
+---
+
+# Chapter 5: Anomaly Detection Report
+
+## 5.1 Business Problem
+
+Unusual sales patterns may indicate unexpected demand changes, transaction issues, or operational problems.
+
+Anomaly detection helps managers identify unusual observations that require further investigation.
+
+## 5.2 Dataset Description
+
+This analysis uses cleaned retail transaction data and the anomaly detection outputs generated by the project.
+
+## 5.3 Methodology
+
+The workflow includes:
+- Data preparation.
+- Selection of relevant sales variables.
+- Anomaly identification.
+- Alert generation.
+- Visualization of unusual observations.
+
+## 5.4 Analysis and Visualizations
+
+### Anomaly Alerts
+
+```{r}
+show_table("anomaly_alerts.csv", "Detected Anomaly Alerts", 20)
+```
+
+### Anomaly Visualization
+
+```{r}
+show_figure("figures/39_anomalies.png", "Anomaly Detection Results")
+```
+
+### Data Quality
+
+```{r}
+show_table("data_quality_report.csv", "Data Quality Report")
+show_table("rejection_reasons.csv", "Data Rejection Reasons")
+```
+
+## 5.5 Key Findings
+
+The project produces anomaly alerts and visualizations to highlight unusual observations.
+
+Each flagged observation should be reviewed before deciding whether it represents a genuine business issue.
+
+## 5.6 Business Implications
+
+Anomaly detection can support early investigation of unusual transaction patterns and help improve operational monitoring.
+
+## 5.7 Recommendations
+
+- Review flagged anomalies regularly.
+- Investigate unusual revenue and quantity patterns.
+- Check suspicious records against source transactions.
+- Maintain data validation procedures.
+- Record the reason for each investigated alert.
+
+## 5.8 Limitations
+
+- An anomaly is not necessarily an error or fraud.
+- Detection depends on the selected method and thresholds.
+- Unusual but genuine business events may also be flagged.
+
+---
+
+# Chapter 6: Final Business Recommendations Report
+
+## 6.1 Business Problem
+
+Retail managers need a consolidated view of sales, customers, inventory, demand, and unusual business patterns.
+
+This chapter combines the project outputs into practical business recommendations.
+
+## 6.2 Dataset Description
+
+This report uses the cleaned sales dataset and the generated sales, customer, inventory, forecasting, and anomaly analysis outputs.
+
+## 6.3 Methodology
+
+The recommendations are based on:
+- Sales KPI analysis.
+- Customer segmentation and churn analysis.
+- Inventory risk analysis.
+- Demand forecasting.
+- Anomaly detection.
+
+## 6.4 Analysis and Visualizations
+
+### Business Recommendation Summary
+
+```{r}
+show_table("recommendation_summary.csv", "Recommendation Summary")
+show_table("recommendations.csv", "Business Recommendations")
+show_figure("figures/40_recommendations_by_type.png", "Recommendations by Type")
+```
+
+### Sales and Customer Performance
+
+```{r}
+show_table("kpi_summary.csv", "Sales KPI Summary")
+show_table("high_value_customers.csv", "High-Value Customers")
+```
+
+### Inventory and Forecasting
+
+```{r}
+show_table("inventory_kpis.csv", "Inventory KPI Summary")
+show_table("forecast_model_comparison.csv", "Forecast Model Comparison")
+```
+
+## 6.5 Key Findings
+
+The project provides analytical outputs across five important areas:
+
+1. Sales performance and revenue trends.
+2. Customer value and churn risk.
+3. Inventory status and stock risk.
+4. Demand forecasting and model evaluation.
+5. Anomaly alerts and data quality.
+
+These outputs provide a foundation for evidence-based retail decisions.
+
+## 6.6 Business Implications
+
+Combining the analytical results helps management understand how sales, customers, stock availability, and demand are connected.
+
+## 6.7 Final Recommendations
+
+- Monitor sales KPIs through regular dashboards.
+- Develop targeted strategies for different customer groups.
+- Improve inventory replenishment using demand forecasts.
+- Review high-risk inventory items.
+- Investigate unusual transaction patterns.
+- Evaluate model performance regularly.
+- Refresh datasets and reports periodically.
+
+## 6.8 Limitations
+
+- Findings depend on the quality and completeness of the available datasets.
+- Forecasting and prediction models have uncertainty.
+- Some cost and customer information may be incomplete.
+- Recommendations should be reviewed alongside actual business conditions.
+
+---
+
+# Conclusion
+
+Retail Pulse Kerala demonstrates how data analytics can support retail business decisions.
+
+The project combines data cleaning, exploratory analysis, KPI calculation, customer analytics, inventory optimization, demand forecasting, anomaly detection, and business recommendations.
+
+The final reports translate technical analysis into information that retail managers can use for planning and decision-making.

@@ -8,7 +8,13 @@ library(testthat)
 library(dplyr)
 
 # Load reusable functions
-source("R/11_reusable_functions.R")
+source(
+  if (dir.exists("R")) {
+    "R/13_reusable_functions.R"
+  } else {
+    "13_reusable_functions.R"
+  }
+)
 
 # Test 1: Check required columns
 test_that("Required columns are available", {
