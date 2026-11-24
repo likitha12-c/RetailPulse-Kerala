@@ -1,0 +1,12 @@
+
+# RStudio temporary files
+.RData
+.Rhistory
+.Rproj.user/
+
+# renv package library
+renv/library/
+renv/staging/
+
+# Temporary files
+*.tmp

@@ -1,0 +1,26 @@
+
+name: Retail Pulse Kerala Scheduled Refresh
+
+on:
+  schedule:
+    # Every day at 2:30 AM Kerala time
+    - cron: "0 21 * * *"
+
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Restore R packages
+        uses: r-lib/actions/setup-renv@v2
+
+      - name: Run Retail Pulse analysis
+        run: Rscript -e "targets::tar_make()"
